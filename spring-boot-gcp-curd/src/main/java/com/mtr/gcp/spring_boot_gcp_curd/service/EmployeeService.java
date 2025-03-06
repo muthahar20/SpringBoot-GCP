@@ -9,6 +9,8 @@ import java.util.List;
 @Service
 public class EmployeeService {
 
+
+
     private final EmployeeRepository employeeRepository;
 
     public EmployeeService( EmployeeRepository employeeRepository){
@@ -19,7 +21,8 @@ public class EmployeeService {
         return employeeRepository.findAll();
     }
 
-    public Employee createEmployee( Employee employee){
+    public Employee createEmployee( Employee employee) {
+
         return employeeRepository.save(employee);
     }
 
@@ -30,8 +33,9 @@ public class EmployeeService {
     public Employee updateEmployee(Long id, Employee employeeDetails){
        Employee employee1 = employeeRepository.findById(id).orElse(null);
       if( employee1 != null){
-          employee1.setName( employeeDetails.getName());
-          employee1.setDepartment(employeeDetails.getDepartment());
+          employee1.setFirstName( employeeDetails.getFirstName());
+          employee1.setFirstName( employeeDetails.getLastName());
+          employee1.setEmailId(employeeDetails.getEmailId());
           return employeeRepository.save(employee1);
       }
        return null;
